@@ -63,10 +63,6 @@
               name: Arbeit Tassi
               color: stone
             - type: ical
-              url: "{{HOMEPAGE_VAR_GCAL_ICS_URL_Birthdays}}"
-              name: Birthdays
-              color: rose
-            - type: ical
               url: "{{HOMEPAGE_VAR_GCAL_ICS_URL_Projects}}"
               name: Projects
               color: violet
