@@ -1,0 +1,69 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/services
+
+- Top Services:
+    - Proxmox:
+        icon: proxmox.png # icons found here https://github.com/walkxcode/dashboard-icons
+        href: https://proxmox.home:8006
+        description: Proxmox VE
+        widget:
+          type: proxmox
+          url: https://proxmox.home:8006
+          username: "{{HOMEPAGE_VAR_PROXMOX_USERNAME}}" # format: tokenid@pam!tokenname
+          password: "{{HOMEPAGE_VAR_PROXMOX_PASSWORD}}" # the token secret
+          fields: ["vms", "lxc", "resources.cpu", "resources.mem"] # cluster-wide average by default; add "node: pve-1" to pin one node
+    - FritzBox:
+        icon: fritzbox.svg # icons found here
+        href: http://192.168.178.1/
+        description: Router
+    - UniFi:
+        icon: unifi.svg # icons found here
+        href: https://192.168.1.1
+        description: Network Controller
+    - UNAS:
+        icon: unifi.png # no dedicated UNAS icon exists yet, reuses the UniFi logo
+        href: https://unas.home
+        description: UniFi Network Storage
+        widget:
+          type: unifi_drive
+          url: https://unas.home
+          username: "{{HOMEPAGE_VAR_UNAS_USERNAME}}" # local UNAS account, read-only is enough
+          password: "{{HOMEPAGE_VAR_UNAS_PASSWORD}}"
+          fields: ["total", "used", "available", "status"]
+    - Home Assistant:
+        icon: home-assistant.svg # icons found here
+        href: http://ha.home:8123
+        description: Home Automation
+    - Paperless:
+        icon: paperless.svg # icons found here
+        href: http://paperless.home:8000
+        description: Document Management
+
+- Calendar:
+    - Calendar:
+        icon: google-calendar.png
+        description: Monthly overview
+        widget:
+          type: calendar
+          view: monthly
+          firstDayInWeek: monday
+          showTime: true
+          integrations:
+            - type: ical
+              url: "{{HOMEPAGE_VAR_GCAL_ICS_URL}}" # Google Calendar > Settings > "Secret address in iCal format"
+              name: My Calendar
+              color: sky
+    - Agenda:
+        icon: google-calendar.png
+        description: Upcoming events
+        widget:
+          type: calendar
+          view: agenda
+          maxEvents: 10
+          previousDays: 0
+          integrations:
+            - type: ical
+              url: "{{HOMEPAGE_VAR_GCAL_ICS_URL}}"
+              name: My Calendar
+              color: sky

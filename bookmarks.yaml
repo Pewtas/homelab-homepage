@@ -1,0 +1,13 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/bookmarks
+
+- Quick Links:
+    - Reddit:
+        - icon: reddit.png # icons found here https://github.com/walkxcode/dashboard-icons
+          href: https://reddit.com/
+          description: The front page of the internet
+    - YouTube:
+        - icon: youtube.png # icons found here
+          href: https://youtube.com/
+          description: Video platform

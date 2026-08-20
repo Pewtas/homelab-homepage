@@ -1,0 +1,61 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/service-widgets
+
+- resources:
+    cpu: true
+    memory: true
+    disk: /
+
+- search:
+    provider: google
+    target: _self # open search results in same tab
+    focus: true # focus the search input on page load
+    showSearchSuggestions: true
+    shortcuts:
+      - name: github
+        shortcut: gh
+        url: https://github.com/search?q={query}
+      - name: leo
+        shortcut: leo
+        url: https://dict.leo.org/german-english/{query}
+      - name: reddit
+        shortcut: r
+        url: https://www.reddit.com/search/?q={query}
+      - name: yahoo finance
+        shortcut: yf
+        url: https://finance.yahoo.com/quote/{query}
+      - name: youtube
+        shortcut: yt
+        url: https://www.youtube.com/results?search_query={query}
+      - name: wikipedia
+        shortcut: wiki
+        url: https://en.wikipedia.org/w/index.php?search={query}
+
+- stocks:
+    provider: finnhub
+    color: true # optional, defaults to true
+    cache: 1 # optional, default caches results for 1 minute
+    watchlist:
+      - GME
+      - GME-WT
+      - NVO
+      - DB1.DE
+      - IBM
+      - GOOG
+      - AAPL
+      - BRK.B
+
+- datetime:
+    text_size: xl
+    format:
+      timeStyle: short
+      hourcycle: h23
+
+- openweathermap:
+    label: Nürnberg
+    latitude: 49.4543
+    longitude: 11.0746
+    units: metric
+    provider: openweathermap
+    cache: 5
