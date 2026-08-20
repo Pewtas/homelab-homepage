@@ -49,11 +49,31 @@
           view: monthly
           firstDayInWeek: monday
           showTime: true
-          integrations:
+          integrations: &calendar_integrations
             - type: ical
-              url: "{{HOMEPAGE_VAR_GCAL_ICS_URL}}" # Google Calendar > Settings > "Secret address in iCal format"
-              name: My Calendar
-              color: sky
+              url: "{{HOMEPAGE_VAR_GCAL_ICS_URL_Tassi}}" # Google Calendar > Settings > "Secret address in iCal format"
+              name: Tassi
+              color: green
+            - type: ical
+              url: "{{HOMEPAGE_VAR_GCAL_ICS_URL_Anna_Tassi}}"
+              name: Anna & Tassi
+              color: amber
+            - type: ical
+              url: "{{HOMEPAGE_VAR_GCAL_ICS_URL_Arbeit_Tassi}}"
+              name: Arbeit Tassi
+              color: stone
+            - type: ical
+              url: "{{HOMEPAGE_VAR_GCAL_ICS_URL_Birthdays}}"
+              name: Birthdays
+              color: rose
+            - type: ical
+              url: "{{HOMEPAGE_VAR_GCAL_ICS_URL_Projects}}"
+              name: Projects
+              color: violet
+            - type: ical
+              url: "{{HOMEPAGE_VAR_GCAL_ICS_URL_Sport}}"
+              name: Sport
+              color: purple
     - Agenda:
         icon: google-calendar.png
         description: Upcoming events
@@ -62,8 +82,4 @@
           view: agenda
           maxEvents: 10
           previousDays: 0
-          integrations:
-            - type: ical
-              url: "{{HOMEPAGE_VAR_GCAL_ICS_URL}}"
-              name: My Calendar
-              color: sky
+          integrations: *calendar_integrations
