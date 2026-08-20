@@ -1,4 +1,4 @@
-# Doku
+# Documentation
 https://community-scripts.github.io/ProxmoxVE/scripts?id=homepage&category=Dashboards+%26+Frontends
 https://technotim.com/posts/homepage-dashboard/
 
