@@ -12,12 +12,9 @@ generated files by hand.
 
 ```bash
 cd /opt/homepage
-
-```bash
-cd /opt/homepage
-mv config config.bak                                 # keep the generated files as a fallba
+mv config config.bak                                 # keep the generated files as a fallback
 git clone https://github.com/Pewtas/homelab-homepage.git config
-diff -rq config.bak config                            # sanity check, then remove config.ba
+diff -rq config.bak config                            # sanity check, then remove config.bak
 ```
 
 `.env` lives one level up at `/opt/homepage/.env` and is NOT part of this clone - it holds real
@@ -48,3 +45,35 @@ To update the homepage container image itself, log in to proxmox and start the L
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/ct/homepage.sh)"
 ```
+
+# UNAS read-only user (for the `unifi_drive` widget)
+The UNAS tile in `services.yaml` uses the `unifi_drive` widget to poll storage stats
+(`total`, `used`, `available`, `status`). It authenticates with
+`HOMEPAGE_VAR_UNAS_USERNAME` / `HOMEPAGE_VAR_UNAS_PASSWORD`, which must be a dedicated,
+least-privilege account on the UNAS itself, not a personal admin account. Steps to create it:
+
+1. Open the UNAS's own UniFi OS console on the LAN (e.g. `https://unas.home`), logged in
+   locally - not via the `unifi.ui.com` cloud portal. Creating the account from the local
+   console is what lets it be scoped as local-only in the next step.
+2. Go to **Settings > Admins** (People) **> Add Admin / Create New User**.
+3. Turn **Remote Access off** so the account is local-only:
+   - it lives only on this UNAS, not tied to a Ubiquiti cloud/SSO identity
+   - a leaked credential can't be used to sign in to `unifi.ui.com` or any other console
+   - local accounts don't support MFA, so this is a real tradeoff - keep the password long,
+     random, and unique to this account (a password manager-generated one, not reused
+     anywhere else)
+4. Set a username and password - these are what go into `.env` in step 6.
+5. Under per-application permissions, set the storage/drive application to **View Only** (if possible, else full-access) and
+   every other application (Network, Protect, Access, etc.) to **None**. View Only can read
+   status but cannot change configuration or delete data.
+6. Create the user, then on the homepage container fill in the real values (this repo's
+   `.env` only documents the variable names, see above):
+   ```bash
+   nano /opt/homepage/.env
+   # HOMEPAGE_VAR_UNAS_USERNAME=...
+   # HOMEPAGE_VAR_UNAS_PASSWORD=...
+   systemctl restart homepage   # or `docker restart homepage`
+   ```
+7. Confirm the UNAS tile on the dashboard shows total/used/available/status with no API error.
+   If it shows a stale/incorrect value after fixing bad credentials, restart the homepage
+   service/container again to clear its cache.
