@@ -38,13 +38,10 @@
     cache: 1 # optional, default caches results for 1 minute
     watchlist:
       - GME
-      - GME-WT
-      - NVO
-      - DB1.DE
-      - IBM
       - GOOG
       - AAPL
       - BRK.B
+      - NVO
 
 - datetime:
     text_size: xl
