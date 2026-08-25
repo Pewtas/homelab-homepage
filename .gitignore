@@ -1,0 +1,3 @@
+# Real secrets belong in /opt/homepage/.env on the container, outside this repo.
+# This entry is just a safety net in case a real .env ever ends up in here by mistake.
+.env

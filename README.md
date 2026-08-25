@@ -18,7 +18,7 @@ diff -rq config.bak config                            # sanity check, then remov
 ```
 
 `.env` lives one level up at `/opt/homepage/.env` and is NOT part of this clone - it holds real
-secrets and is maintained only on the container. This repo's `.env` is documentation of the
+secrets and is maintained only on the container. This repo's `.env.example` documents the
 variable names only; fill in the real values on the container by hand:
 
 ```bash
@@ -33,7 +33,7 @@ cd /opt/homepage/config && git pull
 ```
 
 Homepage watches `config/` and hot-reloads most changes automatically. If a change adds a new
-`HOMEPAGE_VAR_*` variable to `.env`, add it to `/opt/homepage/.env` and restart the service
+`HOMEPAGE_VAR_*` variable to `.env.example`, add it to `/opt/homepage/.env` and restart the service
 new env var is picked up:
 
 ```bash
@@ -67,7 +67,7 @@ least-privilege account on the UNAS itself, not a personal admin account. Steps 
    every other application (Network, Protect, Access, etc.) to **None**. View Only can read
    status but cannot change configuration or delete data.
 6. Create the user, then on the homepage container fill in the real values (this repo's
-   `.env` only documents the variable names, see above):
+   `.env.example` only documents the variable names, see above):
    ```bash
    nano /opt/homepage/.env
    # HOMEPAGE_VAR_UNAS_USERNAME=...
