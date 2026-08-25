@@ -38,3 +38,8 @@
           href: https://hckrnews.com/
           description: Curated Hacker News front page
           target: _self
+    - Github:
+        - icon: github.png # icons found here
+          href: https://github.com/
+          description: Code hosting platform
+          target: _self
