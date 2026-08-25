@@ -7,28 +7,34 @@
         - icon: google-calendar.png # icons found here
           href: https://calendar.google.com/
           description: Calendar
+          target: _self # open in the same tab instead of a new one
     - Google Keep:
         - icon: google-keep.png # icons found here
           href: https://keep.google.com/
           description: Notes
+          target: _self
     - Reddit:
         - icon: reddit.png # icons found here https://github.com/walkxcode/dashboard-icons
           href: https://reddit.com/
           description: The front page of the internet
+          target: _self
     - YouTube:
         - icon: youtube.png # icons found here
           href: https://youtube.com/
           description: Video platform
+          target: _self
     - Claude:
         - icon: claude-ai.png # icons found here
           href: https://claude.ai/
           description: AI assistant
+          target: _self
     - Spotify:
         - icon: spotify.png # icons found here
           href: https://open.spotify.com/
           description: Music streaming
+          target: _self
     - Hacker News:
         - icon: hacker-news.png # icons found here, no dedicated hckrnews.com icon exists
           href: https://hckrnews.com/
           description: Curated Hacker News front page
-
+          target: _self
