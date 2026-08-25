@@ -56,3 +56,5 @@
     units: metric
     provider: openweathermap
     cache: 5
+    format:
+      maximumFractionDigits: 1
