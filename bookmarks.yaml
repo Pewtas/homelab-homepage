@@ -3,6 +3,14 @@
 # https://gethomepage.dev/configs/bookmarks
 
 - Quick Links:
+    - Google Calendar:
+        - icon: google-calendar.png # icons found here
+          href: https://calendar.google.com/
+          description: Calendar
+    - Google Keep:
+        - icon: google-keep.png # icons found here
+          href: https://keep.google.com/
+          description: Notes
     - Reddit:
         - icon: reddit.png # icons found here https://github.com/walkxcode/dashboard-icons
           href: https://reddit.com/
@@ -11,3 +19,16 @@
         - icon: youtube.png # icons found here
           href: https://youtube.com/
           description: Video platform
+    - Claude:
+        - icon: claude-ai.png # icons found here
+          href: https://claude.ai/
+          description: AI assistant
+    - Spotify:
+        - icon: spotify.png # icons found here
+          href: https://open.spotify.com/
+          description: Music streaming
+    - Hacker News:
+        - icon: hacker-news.png # icons found here, no dedicated hckrnews.com icon exists
+          href: https://hckrnews.com/
+          description: Curated Hacker News front page
+

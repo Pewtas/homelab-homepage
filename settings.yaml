@@ -15,3 +15,14 @@ background:
 providers:
   finnhub: "{{HOMEPAGE_VAR_FINNHUB_API_KEY}}"
   openweathermap: "{{HOMEPAGE_VAR_OPENWEATHERMAP_API_KEY}}"
+
+# Group order + per-group display. Quick Links is a bookmarks.yaml group; without
+# this it would render below all services.yaml groups by default.
+# https://gethomepage.dev/configs/settings/#layout
+layout:
+  Quick Links:
+    style: row
+    columns: 4
+    iconsOnly: true # icon-only, no title text - see https://gethomepage.dev/configs/settings/#icons-only-layout
+  Top Services:
+  Calendar:
