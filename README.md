@@ -77,3 +77,31 @@ least-privilege account on the UNAS itself, not a personal admin account. Steps 
 7. Confirm the UNAS tile on the dashboard shows total/used/available/status with no API error.
    If it shows a stale/incorrect value after fixing bad credentials, restart the homepage
    service/container again to clear its cache.
+
+# Read User for the Proxmox Backup Server
+Run the commands below on the pbs VM
+```bash
+# dedicated user in the PBS realm (no password needed for token-only use)
+proxmox-backup-manager user create homepage@pbs
+
+# create the token; the secret is printed ONCE, so copy it now
+proxmox-backup-manager user generate-token homepage@pbs homepage
+
+# Audit on / for both the user and the token
+proxmox-backup-manager acl update / Audit --auth-id homepage@pbs
+proxmox-backup-manager acl update / Audit --auth-id 'homepage@pbs!homepage'
+```
+# Add this to the services.yaml and add the secrets to the /opt/homepage/.env then restart
+```yaml
+ - Proxmox Backup Server:
+     icon: proxmox.png
+     href: https://pbs.home:8007
+     description: Backups
+     widget:
+       type: proxmoxbackupserver
+       url: https://pbs.home:8007
+       username: homepage@pbs!homepage        # full token ID
+       password: "{{HOMEPAGE_VAR_PROXMOXBACKUPSERVER_TOKEN}}" # token secret
+       datastore: main                        # optional
+       fields: ["datastore_usage", "failed_tasks_24h", "cpu_usage", "memory_usage"]
+```
