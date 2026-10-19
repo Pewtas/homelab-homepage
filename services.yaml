@@ -13,6 +13,17 @@
           username: "{{HOMEPAGE_VAR_PROXMOX_USERNAME}}" # format: tokenid@pam!tokenname
           password: "{{HOMEPAGE_VAR_PROXMOX_PASSWORD}}" # the token secret
           fields: ["vms", "lxc", "resources.cpu", "resources.mem"] # cluster-wide average by default; add "node: pve-1" to pin one node
+    - Proxmox Backup Server:
+        icon: proxmox.png
+        href: https://pbs.home:8007
+        description: Backups
+        widget:
+          type: proxmoxbackupserver
+          url: https://pbs.home:8007
+          username: "{{HOMEPAGE_VAR_PROXMOXBACKUPSERVER_USERNAME}}" # format: tokenid@pam!tokenname
+          password: "{{HOMEPAGE_VAR_PROXMOXBACKUPSERVER_PASSWORD}}" # the token secret
+          datastore: main # optional
+          fields: ["datastore_usage", "failed_tasks_24h", "cpu_usage", "memory_usage"]
     - FritzBox:
         icon: fritzbox.svg # icons found here
         href: http://192.168.178.1/
