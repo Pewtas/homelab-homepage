@@ -3,6 +3,24 @@
 # https://gethomepage.dev/latest/configs/services
 
 - Top Services:
+    - FritzBox:
+        icon: fritzbox.svg # icons found here
+        href: http://192.168.178.1/
+        description: Router
+    - UniFi:
+        icon: unifi.svg # icons found here
+        href: https://192.168.1.1
+        description: Network Controller
+    - UNAS:
+        icon: unifi.png # no dedicated UNAS icon exists yet, reuses the UniFi logo
+        href: https://unas.home
+        description: UniFi Network Storage
+        widget:
+          type: unifi_drive
+          url: https://unas.home
+          username: "{{HOMEPAGE_VAR_UNAS_USERNAME}}" # local UNAS account, read-only is enough
+          password: "{{HOMEPAGE_VAR_UNAS_PASSWORD}}"
+          fields: ["total", "used", "available", "status"]
     - Proxmox:
         icon: proxmox.png # icons found here https://github.com/walkxcode/dashboard-icons
         href: https://proxmox.home:8006
@@ -24,24 +42,6 @@
           password: "{{HOMEPAGE_VAR_PROXMOXBACKUPSERVER_PASSWORD}}" # the token secret
           datastore: main # optional
           fields: ["datastore_usage", "failed_tasks_24h", "cpu_usage", "memory_usage"]
-    - FritzBox:
-        icon: fritzbox.svg # icons found here
-        href: http://192.168.178.1/
-        description: Router
-    - UniFi:
-        icon: unifi.svg # icons found here
-        href: https://192.168.1.1
-        description: Network Controller
-    - UNAS:
-        icon: unifi.png # no dedicated UNAS icon exists yet, reuses the UniFi logo
-        href: https://unas.home
-        description: UniFi Network Storage
-        widget:
-          type: unifi_drive
-          url: https://unas.home
-          username: "{{HOMEPAGE_VAR_UNAS_USERNAME}}" # local UNAS account, read-only is enough
-          password: "{{HOMEPAGE_VAR_UNAS_PASSWORD}}"
-          fields: ["total", "used", "available", "status"]
     - Home Assistant:
         icon: home-assistant.svg # icons found here
         href: http://ha.home:8123
