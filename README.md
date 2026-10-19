@@ -91,8 +91,9 @@ proxmox-backup-manager user generate-token homepage@pbs homepage
 proxmox-backup-manager acl update / Audit --auth-id homepage@pbs
 proxmox-backup-manager acl update / Audit --auth-id 'homepage@pbs!homepage'
 ```
-# Add this to the services.yaml and add the secrets to the /opt/homepage/.env then restart
+
 ```yaml
+# Add this to the services.yaml and add the secrets to the /opt/homepage/.env then restart
  - Proxmox Backup Server:
      icon: proxmox.png
      href: https://pbs.home:8007
